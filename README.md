@@ -17,9 +17,6 @@ A responsive promotional web page for a Buy One Get One (BOGO) style offer. Buil
 - CSS3
 - Vanilla JavaScript
 
-## 📷 Screenshot
-
-> _Add a screenshot here if you have one — e.g., `![Screenshot](screenshot.png)`_
 
 ## 🚀 Getting Started
 
