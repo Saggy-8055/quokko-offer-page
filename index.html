@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Quokka Offer!!</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #fff;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+    .container {
+      width: 100%;
+      max-width: 600px;
+      margin: auto;
+      border: 1px solid #ccc;
+      padding: 30px;
+      background-color: white;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    h2 {
+      text-align: center;
+      color: red;
+      margin-bottom: 25px;
+    }
+    .box {
+      border: 2px solid #ccc;
+      border-radius: 5px;
+      margin-bottom: 20px;
+      padding: 20px;
+      cursor: pointer;
+      position: relative;
+      transition: all 0.3s ease;
+    }
+    .box.active {
+      border-color: red;
+      background-color: #fff0f5;
+    }
+    .discount {
+      background-color:red;
+      color: white;
+      padding: 2px 6px;
+      font-size: 12px;
+      border-radius: 3px;
+      margin-left: 5px;
+    }
+    .most-popular {
+      position: absolute;
+      top: -12px;
+      right: -12px;
+      background-color: red;
+      color: white;
+      padding: 4px 10px;
+      font-size: 10px;
+      border-radius: 5px;
+    }
+    .details {
+      display: none;
+      margin-top: 15px;
+    }
+    .box.active .details {
+      display: block;
+    }
+    select {
+      padding: 8px;
+      margin-right: 10px;
+      margin-bottom: 10px;
+      width: 45%;
+    }
+    .price {
+      float: right;
+      font-weight: bold;
+    }
+    .total, .delivery, .add-to-cart {
+      text-align: center;
+      margin-top: 25px;
+    }
+    .add-to-cart button {
+      background-color:red;
+      color: white;
+      padding: 12px;
+      border: none;
+      width: 100%;
+      font-size: 18px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .powered {
+      text-align: center;
+      font-size: 12px;
+      color: #999;
+      margin-top: 15px;
+    }
+
+    @media (max-width: 768px) {
+      .container {
+        width: 95%;
+        padding: 20px;
+      }
+      select {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>YAY! It's BOGO</h2>
+
+    <div class="box" onclick="selectBox(1)">
+      <div>
+        <strong>1 Unit</strong>
+        <span class="discount">10% Off</span>
+        <span class="price">$20.00 USD</span>
+      </div>
+      <div class="details">
+        <p>Standard Price</p>
+      </div>
+    </div>
+
+    <div class="box" onclick="selectBox(2)">
+      <div>
+        <strong>2 Unit</strong>
+        <span class="discount">20% Off</span>
+        <span class="most-popular">MOST POPULAR</span>
+        <span class="price">$36.00 USD</span>
+      </div>
+      <div class="details">
+        <div>
+          <label>#1</label>
+          <select><option>S</option><option>M</option><option>L</option></select>
+          <select><option>Black</option><option>Red</option><option>Blue</option></select>
+        </div>
+        <div>
+          <label>#2</label>
+          <select><option>S</option><option>M</option><option>L</option></select>
+          <select><option>Black</option><option>Red</option><option>Blue</option></select>
+        </div>
+      </div>
+    </div>
+
+    <div class="box" onclick="selectBox(3)">
+      <div>
+        <strong>3 Unit</strong>
+        <span class="discount">30% Off</span>
+        <span class="price">$48.00 USD</span>
+      </div>
+      <div class="details">
+        <div>
+          <label>#1</label>
+          <select><option>S</option><option>M</option><option>L</option></select>
+          <select><option>Black</option><option>Red</option><option>Blue</option></select>
+        </div>
+        <div>
+          <label>#2</label>
+          <select><option>S</option><option>M</option><option>L</option></select>
+          <select><option>Black</option><option>Red</option><option>Blue</option></select>
+        </div>
+        <div>
+          <label>#3</label>
+          <select><option>S</option><option>M</option><option>L</option></select>
+          <select><option>Black</option><option>Red</option><option>Blue</option></select>
+        </div>
+      </div>
+    </div>
+
+    <div class="delivery">Free Delivery</div>
+    <div class="total">Total : <strong id="totalPrice">$20.00 USD</strong></div>
+    <div class="add-to-cart">
+      <button>Add to Cart</button>
+    </div>
+    <div class="powered">@ Powered by Quokka</div>
+  </div>
+
+  <script>
+    const boxes = document.querySelectorAll('.box');
+    const totalPrice = document.getElementById('totalPrice');
+
+    const prices = {
+      1: '$20.00 USD',
+      2: '$36.00 USD',
+      3: '$48.00 USD'
+    };
+
+    function selectBox(index) {
+      boxes.forEach((box, i) => {
+        box.classList.toggle('active', i === index - 1);
+      });
+      totalPrice.innerText = prices[index];
+    }
+
+    // Default selection
+    selectBox(1);
+  </script>
+</body>
+</html>
